@@ -52,10 +52,11 @@
             this.goToChangePasswordForm = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.NoticeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sendNoticeBtn = new System.Windows.Forms.Button();
             this.noticeTxt = new System.Windows.Forms.TextBox();
+            this.NoticeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataTable)).BeginInit();
@@ -310,7 +311,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NoticeId,
-            this.Details});
+            this.Details,
+            this.Date});
             this.dataGridView1.Location = new System.Drawing.Point(812, 320);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -319,6 +321,24 @@
             this.dataGridView1.Size = new System.Drawing.Size(375, 150);
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // sendNoticeBtn
+            // 
+            this.sendNoticeBtn.Location = new System.Drawing.Point(911, 565);
+            this.sendNoticeBtn.Name = "sendNoticeBtn";
+            this.sendNoticeBtn.Size = new System.Drawing.Size(161, 37);
+            this.sendNoticeBtn.TabIndex = 20;
+            this.sendNoticeBtn.Text = "Send Notice";
+            this.sendNoticeBtn.UseVisualStyleBackColor = true;
+            this.sendNoticeBtn.Click += new System.EventHandler(this.sendNoticeBtn_Click);
+            // 
+            // noticeTxt
+            // 
+            this.noticeTxt.Location = new System.Drawing.Point(835, 486);
+            this.noticeTxt.Multiline = true;
+            this.noticeTxt.Name = "noticeTxt";
+            this.noticeTxt.Size = new System.Drawing.Size(298, 73);
+            this.noticeTxt.TabIndex = 21;
             // 
             // NoticeId
             // 
@@ -338,23 +358,14 @@
             this.Details.ReadOnly = true;
             this.Details.Width = 125;
             // 
-            // sendNoticeBtn
+            // Date
             // 
-            this.sendNoticeBtn.Location = new System.Drawing.Point(911, 565);
-            this.sendNoticeBtn.Name = "sendNoticeBtn";
-            this.sendNoticeBtn.Size = new System.Drawing.Size(161, 37);
-            this.sendNoticeBtn.TabIndex = 20;
-            this.sendNoticeBtn.Text = "Send Notice";
-            this.sendNoticeBtn.UseVisualStyleBackColor = true;
-            this.sendNoticeBtn.Click += new System.EventHandler(this.sendNoticeBtn_Click);
-            // 
-            // noticeTxt
-            // 
-            this.noticeTxt.Location = new System.Drawing.Point(835, 486);
-            this.noticeTxt.Multiline = true;
-            this.noticeTxt.Name = "noticeTxt";
-            this.noticeTxt.Size = new System.Drawing.Size(298, 73);
-            this.noticeTxt.TabIndex = 21;
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Time";
+            this.Date.MinimumWidth = 6;
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            this.Date.Width = 125;
             // 
             // UserHomeForm
             // 
@@ -419,9 +430,10 @@
         private System.Windows.Forms.Button goToChangePasswordForm;
         private System.Windows.Forms.Button logOutBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoticeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Details;
         private System.Windows.Forms.Button sendNoticeBtn;
         private System.Windows.Forms.TextBox noticeTxt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoticeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Details;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
     }
 }

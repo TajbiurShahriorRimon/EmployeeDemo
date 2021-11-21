@@ -551,9 +551,10 @@ namespace EmployeeDemo
                 return;
             }
 
+            DateTime todayDateTime = DateTime.Now;
             string data = this.noticeTxt.Text; //Assigning the value of text field to a variable
             //Insert query
-            string query = $"Insert into Notices (Details) values ('{data}')";
+            string query = $"Insert into Notices (Details, Date) values ('{data}', '{todayDateTime}')";
 
             int row = new Database().InsertNotice(query);
             if(row > 0)
