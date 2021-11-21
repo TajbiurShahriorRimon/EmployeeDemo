@@ -127,5 +127,20 @@ namespace EmployeeDemo
             return rows;
         }
 
+        public int InsertNotice(string query)
+        {
+            this.sqlCommand = new SqlCommand(query, this.sqlConnection);
+            int row = sqlCommand.ExecuteNonQuery();
+            return row;            
+        }
+
+        public SqlDataReader ReadNoticeData(string query)
+        {
+            this.sqlCommand = new SqlCommand(query, this.sqlConnection);
+            SqlDataReader data = this.sqlCommand.ExecuteReader();
+
+            return data;
+        }
+
     }
 }

@@ -34,7 +34,10 @@ namespace EmployeeDemo
             }
 
             this.UserFeatureVisibility();
+
+            //When Uesr Logs in the follwin employee data and notice data are to be shown
             this.ShowData();
+            this.ShowNoticeData();
         }
 
         public UserHomeForm(int employeeId, string employeeType)
@@ -44,7 +47,10 @@ namespace EmployeeDemo
             UserHomeForm.employeeType = employeeType;
 
             this.UserFeatureVisibility();
+
+            //When Uesr Logs in the follwin employee data and notice data are to be shown
             this.ShowData();
+            this.ShowNoticeData();
         }
 
         //Display data in the data grid view
@@ -227,7 +233,7 @@ namespace EmployeeDemo
                 this.employeeUpdateBtn.Enabled = false;
 
                 //After selecting a row from grid view, it has to be checked if the selected row data is Admin's data or employee data
-                //If the data is Admin data then delte button is disabled, because admin cant delete himself, admin can delete only
+                //If the data is Admin data then delete button is disabled, because admin cant delete himself, admin can delete only
                 //employee user type data
                 bool checkAdmin = this.CheckIfAdmin(id);
 
@@ -282,8 +288,10 @@ namespace EmployeeDemo
             }
         }
 
+        //All user will not get all features
         public void UserFeatureVisibility()
         {
+            //The features that user type employee will not get
             if (UserHomeForm.employeeType == "Employee")
             {
                 this.deleteEmployeeBtn.Visible = false;
@@ -291,7 +299,15 @@ namespace EmployeeDemo
                 this.employeeUpdateBtn.Visible = false;
                 this.createEmpBtn.Visible = false;
                 this.searchEmployeeTxt.Visible = false;
+                this.sendNoticeBtn.Visible = false;
 
+                //The notice text field will be read only for user type employee
+                this.noticeTxt.ReadOnly = true;
+            }
+            //If the user type is admin then these feature the admin will not get
+            else if(UserHomeForm.employeeType == "Admin")
+            {
+                this.dataGridView1.Visible = false;
             }
         }
 
@@ -505,6 +521,71 @@ namespace EmployeeDemo
         {
             new Form1().Show();
             this.Hide();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Getting the value from Grid view row, and assigning the value of column 0 to a variable.
+            int noticeId = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            string query = $"Select * from Notices where NoticeId = {noticeId} ORDER BY NoticeId DESC";
+
+            SqlDataReader data = new Database().ReadNoticeData(query);
+
+            string noticeDetais = "";
+            if (data.HasRows)
+            {
+                while (data.Read())
+                {
+                    noticeDetais = data[1].ToString();
+                }
+            }
+
+            this.noticeTxt.Text = noticeDetais; //Assigning the value in text field.
+        }
+
+        private void sendNoticeBtn_Click(object sender, EventArgs e)
+        {
+            if(this.noticeTxt.Text == "")
+            {
+                MessageBox.Show("Notice Field Can not be empty");
+                return;
+            }
+
+            string data = this.noticeTxt.Text; //Assigning the value of text field to a variable
+            //Insert query
+            string query = $"Insert into Notices (Details) values ('{data}')";
+
+            int row = new Database().InsertNotice(query);
+            if(row > 0)
+            {
+                MessageBox.Show("Notice sent Successfully");
+                //After inserting notice, 
+                this.noticeTxt.Text = "";
+            }
+        }
+
+        public void ShowNoticeData()
+        {
+            string query = "Select * from Notices";
+            SqlDataReader dataReader = new Database().ReadNoticeData(query);
+
+            //If data found, then it is prepared to display in the data grid view.
+            if (dataReader.HasRows)
+            {
+                DataTable dataTable = new DataTable();
+                dataTable.Load(dataReader);
+
+                //There will be multiple data with columns. But all columns values are not required in the data grid view.
+                //Therefore the extra column values are ignored.
+                this.dataGridView1.AutoGenerateColumns = false;
+                //Data assigined in the data grid view.
+                this.dataGridView1.DataSource = dataTable;
+            }
+            //Else If no data is found then the data grid view will be empty.
+            else
+            {
+                this.dataGridView1.DataSource = null;
+            }
         }
     }
 }

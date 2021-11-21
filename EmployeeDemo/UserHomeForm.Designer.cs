@@ -51,9 +51,15 @@
             this.searchEmployeeTxt = new System.Windows.Forms.TextBox();
             this.goToChangePasswordForm = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NoticeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sendNoticeBtn = new System.Windows.Forms.Button();
+            this.noticeTxt = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -204,7 +210,7 @@
             // 
             // createEmpBtn
             // 
-            this.createEmpBtn.Location = new System.Drawing.Point(884, 320);
+            this.createEmpBtn.Location = new System.Drawing.Point(911, 25);
             this.createEmpBtn.Name = "createEmpBtn";
             this.createEmpBtn.Size = new System.Drawing.Size(276, 59);
             this.createEmpBtn.TabIndex = 14;
@@ -222,7 +228,7 @@
             this.txtName,
             this.Email,
             this.txtGender});
-            this.EmployeeDataTable.Location = new System.Drawing.Point(125, 78);
+            this.EmployeeDataTable.Location = new System.Drawing.Point(61, 79);
             this.EmployeeDataTable.Name = "EmployeeDataTable";
             this.EmployeeDataTable.ReadOnly = true;
             this.EmployeeDataTable.RowHeadersWidth = 51;
@@ -270,7 +276,7 @@
             // searchEmployeeTxt
             // 
             this.searchEmployeeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchEmployeeTxt.Location = new System.Drawing.Point(281, 25);
+            this.searchEmployeeTxt.Location = new System.Drawing.Point(190, 25);
             this.searchEmployeeTxt.Multiline = true;
             this.searchEmployeeTxt.Name = "searchEmployeeTxt";
             this.searchEmployeeTxt.Size = new System.Drawing.Size(360, 36);
@@ -279,7 +285,7 @@
             // 
             // goToChangePasswordForm
             // 
-            this.goToChangePasswordForm.Location = new System.Drawing.Point(884, 400);
+            this.goToChangePasswordForm.Location = new System.Drawing.Point(911, 105);
             this.goToChangePasswordForm.Name = "goToChangePasswordForm";
             this.goToChangePasswordForm.Size = new System.Drawing.Size(276, 42);
             this.goToChangePasswordForm.TabIndex = 17;
@@ -289,7 +295,7 @@
             // 
             // logOutBtn
             // 
-            this.logOutBtn.Location = new System.Drawing.Point(884, 467);
+            this.logOutBtn.Location = new System.Drawing.Point(911, 172);
             this.logOutBtn.Name = "logOutBtn";
             this.logOutBtn.Size = new System.Drawing.Size(276, 42);
             this.logOutBtn.TabIndex = 18;
@@ -297,11 +303,67 @@
             this.logOutBtn.UseVisualStyleBackColor = true;
             this.logOutBtn.Click += new System.EventHandler(this.logOutBtn_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NoticeId,
+            this.Details});
+            this.dataGridView1.Location = new System.Drawing.Point(812, 320);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(375, 150);
+            this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // NoticeId
+            // 
+            this.NoticeId.DataPropertyName = "NoticeId";
+            this.NoticeId.HeaderText = "Id";
+            this.NoticeId.MinimumWidth = 6;
+            this.NoticeId.Name = "NoticeId";
+            this.NoticeId.ReadOnly = true;
+            this.NoticeId.Width = 125;
+            // 
+            // Details
+            // 
+            this.Details.DataPropertyName = "Details";
+            this.Details.HeaderText = "Details";
+            this.Details.MinimumWidth = 6;
+            this.Details.Name = "Details";
+            this.Details.ReadOnly = true;
+            this.Details.Width = 125;
+            // 
+            // sendNoticeBtn
+            // 
+            this.sendNoticeBtn.Location = new System.Drawing.Point(911, 565);
+            this.sendNoticeBtn.Name = "sendNoticeBtn";
+            this.sendNoticeBtn.Size = new System.Drawing.Size(161, 37);
+            this.sendNoticeBtn.TabIndex = 20;
+            this.sendNoticeBtn.Text = "Send Notice";
+            this.sendNoticeBtn.UseVisualStyleBackColor = true;
+            this.sendNoticeBtn.Click += new System.EventHandler(this.sendNoticeBtn_Click);
+            // 
+            // noticeTxt
+            // 
+            this.noticeTxt.Location = new System.Drawing.Point(835, 486);
+            this.noticeTxt.Multiline = true;
+            this.noticeTxt.Name = "noticeTxt";
+            this.noticeTxt.Size = new System.Drawing.Size(298, 73);
+            this.noticeTxt.TabIndex = 21;
+            // 
             // UserHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 665);
+            this.ClientSize = new System.Drawing.Size(1199, 704);
+            this.Controls.Add(this.noticeTxt);
+            this.Controls.Add(this.sendNoticeBtn);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.logOutBtn);
             this.Controls.Add(this.goToChangePasswordForm);
             this.Controls.Add(this.searchEmployeeTxt);
@@ -325,6 +387,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,5 +418,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txtGender;
         private System.Windows.Forms.Button goToChangePasswordForm;
         private System.Windows.Forms.Button logOutBtn;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoticeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Details;
+        private System.Windows.Forms.Button sendNoticeBtn;
+        private System.Windows.Forms.TextBox noticeTxt;
     }
 }
